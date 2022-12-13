@@ -39,52 +39,5 @@ HELLO!
 
 </form>
 
-<div th:if="${graphics}">
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script th:inline="javascript">google.charts.load('current', {packages: ['corechart', 'line']});
-google.charts.setOnLoadCallback(drawBasic);
-
-function drawBasic() {
-
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'X');
-      data.addColumn('number', 'Y');
-
-    var x1 = [[${graphics.get(0).getKey()}]];
-    var x2 = [[${graphics.get(1).getKey()}]];
-    var x3 = [[${graphics.get(2).getKey()}]];
-    var x4 = [[${graphics.get(3).getKey()}]];
-
-    var y1 = [[${graphics.get(0).getValue()}]];
-    var y2 = [[${graphics.get(1).getValue()}]];
-    var y3 = [[${graphics.get(2).getValue()}]];
-    var y4 = [[${graphics.get(3).getValue()}]];
-
-
-                  data.addRows([
-                    [x1, y1],
-                    [x2, y2],
-                    [x3, y3],
-                    [x4, y4]
-                    ]);
-
-      var options = {
-        hAxis: {
-          title: 'Recall'
-        },
-        vAxis: {
-          title: 'Precision'
-        }
-      };
-
-      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-      chart.draw(data, options);
-    }
-    </script>
-    <div id="chart_div"></div>
-</div>
-
-
 </body>
 </html>
