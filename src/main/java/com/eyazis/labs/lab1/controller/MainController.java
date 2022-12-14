@@ -18,10 +18,14 @@ import java.util.Set;
 public class MainController {
 
     private final MainService service;
+    private boolean isIndexed;
 
     @GetMapping
     public String main() throws FileNotFoundException {
-        service.index();
+        if (!isIndexed) {
+            service.index();
+            isIndexed = true;
+        }
         return "main";
     }
 
@@ -37,7 +41,6 @@ public class MainController {
         return "main";
 
     }
-
 
 
 }
